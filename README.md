@@ -12,14 +12,18 @@ Dua node sensor nirkabel yang dikenakan pada tubuh: satu di pergelangan tangan u
 | No | Nama | NIM | Peran |
 |---|---|---|---|
 | 1 | Yogi Prasetya Sadewa | 23210060 | Ketua kelompok; perangkat lunak penerima, perhitungan QoS, dan integrasi BLE/MQTT |
-| 2 | [Nama Anggota 2] | [NIM] | Perakitan node 1 (ESP32 + MAX30102) dan kalibrasi pembacaan detak jantung |
-| 3 | [Nama Anggota 3] | [NIM] | Perakitan node 2 (ESP32 + MLX90614) dan pengujian pembacaan suhu tubuh |
-| 4 | [Nama Anggota 4] | [NIM] | Dashboard pemantauan dan visualisasi grafik secara langsung |
-| 5 | [Nama Anggota 5] | [NIM] | Pelaksanaan pengujian lapangan: variasi jarak, penghalang, dan interferensi |
-| 6 | [Nama Anggota 6] | [NIM] | Dokumentasi, README, dan pengelolaan repository |
+| 2 | Asmarudin | 23210133 | Perakitan node 1 (ESP32 + MAX30102) dan kalibrasi pembacaan detak jantung |
+| 3 | Deski Taiza | 23210003 | Perakitan node 2 (ESP32 + MLX90614) dan pengujian pembacaan suhu tubuh |
+| 4 | Akhsanul Taqwim | 23210006 | Dashboard pemantauan dan visualisasi grafik secara langsung |
+| 5 | Wira | 23210045 | Pelaksanaan pengujian lapangan: variasi jarak, penghalang, dan interferensi |
+| 6 | Abadi | 23210004 | Pengujian daya tahan baterai dan pencatatan waktu pemakaian |
+| 7 | Ferdyan Ardhani | 23210039 | Pengolahan data hasil pengukuran menjadi tabel dan grafik laporan |
+| 8 | Muhammad Iqbal | 23210142 | Perbandingan hasil pengukuran dengan alat pembanding (oximeter dan termometer) |
+| 9 | Meriandi Wahyu Kurniawan | [NIM] | Dokumentasi, README, dan pengelolaan repository |
 
-> Kelompok berisi 6 orang. Bagian yang belum memiliki nama akan dilengkapi pada
-> pertemuan berikutnya; setiap anggota melakukan commit dari akun masing-masing.
+> Kelompok berjumlah 9 orang; panduan menetapkan 4–5 orang sehingga jumlah ini
+> dimintakan persetujuan dosen pada pertemuan ke-2. Setiap anggota melakukan
+> commit dari akun masing-masing.
 
 ## Rencana Proyek
 
