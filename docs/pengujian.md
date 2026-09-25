@@ -1,5 +1,51 @@
 # Pengujian
 
+## Cara Menjalankan Penerima
+
+```bash
+pip install -r src/receiver/requirements.txt
+
+# Uji coba tanpa perangkat keras (dua node tiruan, 60 detik):
+python src/receiver/receiver.py --source sim --durasi 60 --skenario uji
+
+# Pengukuran sesungguhnya:
+python src/receiver/receiver.py --source ble       # Node 1
+python src/receiver/receiver.py --source mqtt --mqtt-host 192.168.1.10
+python src/receiver/receiver.py --source dua       # keduanya sekaligus
+
+# Simpan grafik ke docs/grafik/:
+python src/dashboard/app.py --plot
+```
+
+Hasil tiap sesi: satu CSV per paket dan satu `.ringkasan.json` berisi keempat
+parameter QoS pada folder `data/`.
+
+> [!warning] Angka simulasi bukan hasil pengukuran
+> Mode `--source sim` memakai dua node tiruan dengan jejak delay buatan. Gunanya
+> menguji perhitungan QoS dan dashboard **sebelum** perangkat keras selesai
+> dirakit, bukan menghasilkan data untuk laporan. Tabel di bawah hanya boleh
+> diisi dari sesi `--source ble` atau `--source mqtt` dengan perangkat
+> sesungguhnya.
+
+### Catatan penting: latency yang dilaporkan adalah delay relatif
+
+Jam pada node dan jam pada laptop penerima tidak sama, sehingga
+`t_terima − t_kirim` bukan latency, melainkan latency ditambah selisih jam.
+Penerima mengestimasi selisih jam itu sebagai nilai **terkecil** dari
+`t_terima − t_kirim` sepanjang sesi (paket tercepat dianggap hampir tanpa
+antrean). Akibatnya angka latency adalah **delay relatif terhadap paket
+tercepat**, bukan delay absolut. Nilai selisih jam yang dipakai dicatat pada
+berkas ringkasan (`offset_jam_detik` dan `catatan_latency`) supaya dapat
+diperiksa, dan hal ini wajib disebutkan saat melaporkan hasil.
+
+Cara membandingkan metode penyelarasan jam:
+
+```bash
+python src/receiver/receiver.py --source mqtt --metode-offset minimum   # bawaan
+python src/receiver/receiver.py --source mqtt --metode-offset awal
+python src/receiver/receiver.py --source mqtt --metode-offset tanpa
+```
+
 ## Skenario yang Diuji
 
 | # | Skenario | Yang divariasikan | Parameter yang diamati |

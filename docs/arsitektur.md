@@ -39,5 +39,19 @@
 ## Catatan Perancangan
 
 Waktu kirim diambil dari jam masing-masing node. Agar latency yang dihitung tidak
-terpengaruh selisih jam, penerima menyelaraskan waktu node pada awal setiap sesi
-(satu kali pertukaran waktu), lalu memakai selisih waktu yang sama selama sesi berjalan.
+terpengaruh selisih jam node dan laptop, penerima mengestimasi selisih jam itu
+sebagai **nilai terkecil** dari `t_terima − t_kirim` sepanjang sesi: paket
+tercepat dianggap hampir tanpa antrean, sehingga selisihnya mendekati selisih
+jam murni.
+
+Akibatnya angka latency yang dilaporkan adalah **delay relatif terhadap paket
+tercepat**, bukan delay absolut — dan itu wajib disebutkan saat melaporkan
+hasil. Nilai selisih jam yang dipakai (`offset_jam_detik`) serta keterangan
+metodenya (`catatan_latency`) ditulis ke berkas ringkasan setiap sesi supaya
+dapat diperiksa. Penerima menyediakan `--metode-offset minimum|awal|tanpa`
+untuk membandingkan ketiga cara.
+
+Node 1 (BLE) memakai waktu sejak menyala karena tidak tersambung internet,
+sedangkan Node 2 (WiFi) dapat mengambil waktu dari NTP. Keduanya tetap berjalan
+dengan penyelarasan di sisi penerima, dan menghidupkan NTP pada Node 1 hanya
+membuat selisihnya lebih kecil — bukan syarat agar latency terhitung.

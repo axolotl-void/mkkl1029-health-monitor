@@ -1,9 +1,25 @@
-.venv/
-__pycache__/
-*.pyc
+# Data hasil pengukuran
 data/*.csv
+data/*.json
 !data/.gitkeep
-firmware/**/build/
-*.bin
-*.elf
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Berkas pendukung editor dan sistem
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Rahasia: sandi WiFi, broker, dan kredensial tidak boleh masuk repository
 .env
+secrets.h
+config.local.h
+
+# Keluaran grafik yang dibangkitkan (boleh dibuat ulang dengan --plot)
+docs/grafik/

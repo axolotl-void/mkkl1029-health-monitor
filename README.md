@@ -66,11 +66,22 @@ arduino-cli compile --upload -p /dev/ttyUSB1 firmware/node2_suhu
 ### 4. Menjalankan penerima dan dashboard
 
 ```bash
-python src/receiver/receiver.py --out data/
-python src/dashboard/app.py
+pip install -r src/receiver/requirements.txt
+
+# Uji cepat tanpa perangkat keras (dua node tiruan):
+python src/receiver/receiver.py --source sim --durasi 60 --skenario uji
+
+# Pengukuran sesungguhnya:
+python src/receiver/receiver.py --source dua --mqtt-host 192.168.1.10
+
+# Dashboard grafik (perlu: pip install streamlit):
+streamlit run src/dashboard/app.py
 ```
 
-> Kerangka kode disediakan pada repository ini. Bagian yang belum selesai ditandai `TODO` beserta minggu pengerjaannya.
+> Hasil tiap sesi: satu CSV per paket dan satu `.ringkasan.json` berisi keempat
+> parameter QoS pada folder `data/`. Angka dari mode `--source sim` adalah
+> tiruan untuk menguji perhitungan, bukan hasil pengukuran — lihat
+> [`docs/pengujian.md`](docs/pengujian.md).
 
 ## Struktur Repository
 
@@ -99,7 +110,7 @@ mkkl1029-health-monitor/
 |---|---|
 | `docs/rencana-proyek.md` | Rencana proyek, target UTS dan UAS, pembagian kerja per minggu, risiko |
 | `docs/arsitektur.md` | Penjelasan komponen, alur data, dan rumus perhitungan QoS |
-| `docs/pengujian.md` | Skenario pengujian dan catatan hasil sementara |
+| `docs/pengujian.md` | Skenario pengujian, cara menjalankan, dan catatan hasil |
 | `docs/diagrams/` | Diagram arsitektur dan titik pengukuran |
 
 ## Pemenuhan Ketentuan Mata Kuliah
